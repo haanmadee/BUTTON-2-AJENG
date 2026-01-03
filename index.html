@@ -2,19 +2,41 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
-    /* Custom Animation: Soft Floating */
+    /* --- ANIMASI MELAYANG (Saat diam) --- */
     @keyframes softFloat {
         0%, 100% { transform: translateY(0px); }
         50% { transform: translateY(-3px); }
     }
-    
     .animate-float {
-        animation: softFloat 3s ease-in-out infinite;
+        animation: softFloat 3s ease-in-out infinite running;
     }
     
+    /* Stop animasi melayang saat ditekan */
+    .btn-press-effect:active {
+         animation-play-state: paused; 
+    }
+
+    /* Delay biar gerakannya ga barengan (lebih natural) */
     .delay-100 { animation-delay: 0.1s; }
     .delay-200 { animation-delay: 0.2s; }
     .delay-300 { animation-delay: 0.3s; }
+    .delay-400 { animation-delay: 0.4s; }
+
+    /* --- EFEK "DEEP PRESS" (Visual Getar/Tekan) --- */
+    .btn-press-effect {
+        transition: all 0.05s ease-out;
+        /* Shadow awal (Hijau) */
+        box-shadow: 0 4px 6px -1px rgba(104, 159, 56, 0.3), 0 2px 4px -1px rgba(104, 159, 56, 0.1);
+    }
+
+    .btn-press-effect:active {
+        /* Turun dan mengecil sedikit */
+        transform: translateY(2px) scale(0.97) !important;
+        /* Shadow luar hilang, ganti shadow dalam */
+        box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.2) !important;
+        /* Sedikit digelapkan */
+        filter: brightness(0.9);
+    }
 </style>
 
 <div style="font-family: 'Poppins', sans-serif; width: 100%; padding: 15px 0;">
@@ -22,8 +44,9 @@
     <div class="flex items-center gap-2 w-full max-w-[380px] mx-auto">
         
         <a href="https://lynk.id/ajengwahys" 
+           target="_blank"
            style="background: linear-gradient(135deg, #8bc34a 0%, #689f38 100%);"
-           class="animate-float delay-100 flex-none w-10 h-10 rounded-full flex items-center justify-center text-white shadow-md hover:scale-105 transition-transform no-underline">
+           class="animate-float delay-100 btn-press-effect flex-none w-10 h-10 rounded-full flex items-center justify-center text-white no-underline relative z-10">
            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
                 <polyline points="9 22 9 12 15 12 15 22"/>
@@ -33,15 +56,22 @@
         <a href="https://lynk.id/ajengwahys/page/page" 
            target="_blank"
            style="background: linear-gradient(90deg, #8bc34a 0%, #689f38 100%);"
-           class="animate-float delay-200 flex-1 flex items-center justify-center h-10 px-1 rounded-full text-white text-[10px] font-medium tracking-[0.05em] uppercase hover:opacity-90 active:scale-95 transition-all no-underline shadow-md leading-tight">
-           Work & Branding
+           class="animate-float delay-200 btn-press-effect flex-1 flex items-center justify-center h-10 px-1 rounded-full text-white text-[10px] font-medium tracking-[0.05em] uppercase no-underline leading-tight relative z-10">
+           Work
+        </a>
+
+        <a href="https://lynk.id/ajengwahys/page/branding" 
+           target="_blank"
+           style="background: linear-gradient(90deg, #8bc34a 0%, #689f38 100%);"
+           class="animate-float delay-300 btn-press-effect flex-1 flex items-center justify-center h-10 px-1 rounded-full text-white text-[10px] font-medium tracking-[0.05em] uppercase no-underline leading-tight relative z-10">
+           Branding
         </a>
 
         <a href="https://lynk.id/ajengwahys/page/trial" 
            target="_blank"
            style="background: linear-gradient(90deg, #8bc34a 0%, #689f38 100%);"
-           class="animate-float delay-300 flex-1 flex items-center justify-center h-10 px-1 rounded-full text-white text-[10px] font-medium tracking-[0.05em] uppercase hover:opacity-90 active:scale-95 transition-all no-underline shadow-md leading-tight">
-           Kids Learning
+           class="animate-float delay-400 btn-press-effect flex-1 flex items-center justify-center h-10 px-1 rounded-full text-white text-[10px] font-medium tracking-[0.05em] uppercase no-underline leading-tight relative z-10">
+           Kids
         </a>
 
     </div>
